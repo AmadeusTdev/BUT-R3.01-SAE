@@ -2,8 +2,9 @@
 // Ce script est le "routeur central", il connecte les scripts entre eux.
 
 // On récupère les infos 
-$page = $_POST['page'];
-if ($page is null) {
+if (array_key_exists('page', $_POST)) {
+    $page = $_POST['page'];
+} else {
     $page = 'login';
 }
 
@@ -14,5 +15,6 @@ if (!isset($_SESSION['uid'])) {
 
 // On redirige vers la bonne page
 if ($page === 'login') {
-    require 'SAE/controllers/loginController.php';
+    require 'controllers/loginController.php';
+    display_login();
 }
