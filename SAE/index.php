@@ -15,6 +15,6 @@ if (!isset($_SESSION['uid'])) {
 
 // On redirige vers la bonne page
 if ($page === 'login') {
-    require 'controllers/loginController.php';
+    require 'modules/controllers/loginController.php';
     display_login();
 }
