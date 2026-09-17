@@ -8,6 +8,14 @@
 - SAE/controllers/ : Répertoire contenant les controllers (gère la logique)
 - SAE/models/ : Répertoire contenant les models (gère les requêtes SQL)
 
+**Pages:**
+- accueil (page d'arrivée)
+- authentification (pour se connecter)
+- forgottenPwd (pour mot de passe oublier)
+- inscription (pour s'inscrire)
+- legalNotice (Mentions légales)
+- map (Pour une vue de toutes les pages) (j'ai pas compris pk mais ok?)
+
 **Nommage des fichiers:**
 Nom pour les fichiers de chaque page:
 - nameController (PHP) / nameView (PHP) / nameModel (SQL) / nameStyle (CSS)
