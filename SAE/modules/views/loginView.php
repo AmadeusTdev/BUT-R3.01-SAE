@@ -8,15 +8,15 @@ function end_page() {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-    <header>
+<html lang="fr">
+    <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="_assets/styles/loginStyle.css">
         <?php start_page(); ?>
-    </header>
+    </head>
     <body>
         <div>
-            <form method='post'>
+            <form method='post' class="form_bg">
                 <p>Login:</p>
                 <input name='form[id]' type="text">
                 <p>Genre</p>
