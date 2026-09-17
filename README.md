@@ -20,6 +20,11 @@
 Nom pour les fichiers de chaque page:
 - nameController (PHP) / nameView (PHP) / nameModel (SQL) / nameStyle (CSS)
 
+**Noyaux:**
+noyau/modele.php : Gère la connection à la BD à l'aide d'une classe abstraite donc les autre modèles héritent
+
 **Wip:**
+Pour changer de page
+header('Location: index.php?action=accueil');
 Pour que un boutton redirige vers le routeur + choisir la page
 "<a href="index.php?action=profil">Aller au profil</a>"
