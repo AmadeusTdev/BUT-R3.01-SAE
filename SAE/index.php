@@ -10,13 +10,11 @@ if (array_key_exists('page', $_POST)) {
 
 // Détection de la session fermée
 if (!isset($_SESSION['uid'])) {
-    $page = 'auth'; // TODO: seulement rediriger vers auth si on été sur une page connecté
+    $page = 'authentification'; // TODO: seulement rediriger vers auth si on été sur une page connecté
 }
 
-// On redirige vers la bonne page
-if ($page === "acceuil") {
-    // TODO
-} elseif ($page === 'auth') {
-    require 'modules/controllers/authentificationController.php';
-    display_authentification();
+// On redirige vers le bon controller
+if (file_exists('modules/controllers/' . $page . 'Controller.php')) {
+    require 'modules/controllers/' . $page . 'Controller.php';
+    display();
 }
