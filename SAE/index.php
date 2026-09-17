@@ -4,8 +4,6 @@
 // On récupère les infos 
 if (array_key_exists('page', $_POST)) {
     $page = $_POST['page'];
-} else {
-    $page = 'acceuil'; // Si la page n'existe pas on redirige vers l'acceuil
 }
 
 // Détection de la session fermée
@@ -16,5 +14,9 @@ if (!isset($_SESSION['uid'])) {
 // On redirige vers le bon controller
 if (file_exists('modules/controllers/' . $page . 'Controller.php')) {
     require 'modules/controllers/' . $page . 'Controller.php';
+    display();
+} else {
+    // Si la page n'existe pas on redirige vers l'accueil
+    require 'modules/controllers/accueilController.php';
     display();
 }
