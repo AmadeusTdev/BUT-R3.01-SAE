@@ -11,3 +11,7 @@
 **Nommage des fichiers:**
 Nom pour les fichiers de chaque page:
 - nameController (PHP) / nameView (PHP) / nameModel (SQL) / nameStyle (CSS)
+
+**Wip:**
+Pour que un boutton redirige vers le routeur + choisir la page
+"<a href="index.php?action=profil">Aller au profil</a>"
