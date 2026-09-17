@@ -10,4 +10,4 @@
 
 **Nommage des fichiers:**
 Nom pour les fichiers de chaque page:
-- nameController / nameView / nameModel
+- nameController (PHP) / nameView (PHP) / nameModel (SQL) / nameStyle (CSS)

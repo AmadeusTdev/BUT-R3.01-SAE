@@ -11,7 +11,7 @@ function end_page() {
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="_assets/styles/loginStyle.css">
+        <link rel="stylesheet" href="_assets/styles/authentificationStyle.css">
         <?php start_page(); ?>
     </head>
     <body>

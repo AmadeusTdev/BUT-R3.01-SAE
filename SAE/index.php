@@ -5,16 +5,18 @@
 if (array_key_exists('page', $_POST)) {
     $page = $_POST['page'];
 } else {
-    $page = 'login';
+    $page = 'acceuil'; // Si la page n'existe pas on redirige vers l'acceuil
 }
 
 // Détection de la session fermée
 if (!isset($_SESSION['uid'])) {
-    $page = 'login';
+    $page = 'auth'; // TODO: seulement rediriger vers auth si on été sur une page connecté
 }
 
 // On redirige vers la bonne page
-if ($page === 'login') {
-    require 'modules/controllers/loginController.php';
-    display_login();
+if ($page === "acceuil") {
+    // TODO
+} elseif ($page === 'auth') {
+    require 'modules/controllers/authentificationController.php';
+    display_authentification();
 }
