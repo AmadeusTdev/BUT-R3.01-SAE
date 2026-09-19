@@ -28,3 +28,12 @@ Pour changer de page
 header('Location: index.php?action=accueil');
 Pour que un boutton redirige vers le routeur + choisir la page
 "<a href="index.php?action=profil">Aller au profil</a>"
+
+**Comment développer le projet :**
+- Créer une branche et s'y déplacer à l'aide de `git checkout -b NOM`
+    Le nom doit avoir la forme TYPE/NOM avec le nom étant ce qui à été fait (exemple: fix/readme ou alors feature/accueilController)
+- Coder la feature ou le fix
+- Commit les changements `git add .`
+- Push les changement de la branche sur le repository
+- Créer une pull request depuis github
+- Enfin merge la branche depuis github
