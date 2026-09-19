@@ -28,9 +28,9 @@ function end_page() {
 
     <h1>Bienvenue sur notre site</h1>
     <nav>
-        <a href="index.php?action=accueil">Accueil</a> |
-        <a href="index.php?action=authentification">Authentification</a> |
-        <a href="index.php?action=inscription">Inscription</a>
+        <a href="index.php?page=accueil">Accueil</a> |
+        <a href="index.php?page=authentification">Authentification</a> |
+        <a href="index.php?page=inscription">Inscription</a>
     </nav>
 </header>
 
