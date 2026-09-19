@@ -19,7 +19,7 @@ function end_page() {
             <?php
             if (!isset($_SESSION['suid'])) {
                 // On affiche le formulaire et les liens pour s'inscrire ou récupérer son mot de passe si on est pas connecté
-                <<<HTML
+                echo <<<HTML
                 <h1>Se connecter :</h1>
                 <form method='post' class="form_bg" action="index.php?page=authentification">
                     <p>Login:</p>
