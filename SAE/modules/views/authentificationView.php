@@ -16,29 +16,30 @@ function end_page() {
     </head>
     <body>
         <div>
-            <form method='post' class="form_bg">
-                <p>Login:</p>
-                <input name='form[id]' type="text">
-                <p>Genre</p>
-                <input name='form[gender]' type="radio">
-                <p>Email:</p>
-                <input name='form[email]' type="text">
-                <p>Mot de passe:</p>
-                <input name='form[mdp]' type="password">
-                <p>Confirmation du mot de passe:</p>
-                <input name='form[mdp2]' type="password">
-                <p>Numéro de téléphone:</p>
-                <input name='form[phone]' type="text">
-                <p>Pays:</p>
-                <select name='form[country]'>
-                    <option value='fr'>France</option>
-                    <option value='en'>Angleterre</option>
-                    <option value='us'>États-Unis</option>
-                </select>
-                <p>Conditions générales:</p>
-                <input name='form[generalCondition]' type="checkbox">
-                <input type="submit">
-            </form>
+            <?php
+            if (!isset($_SESSION['suid'])) {
+                // On affiche le formulaire et les liens pour s'inscrire ou récupérer son mot de passe si on est pas connecté
+                <<<HTML
+                <h1>Se connecter :</h1>
+                <form method='post' class="form_bg" action="index.php?page=authentification">
+                    <p>Login:</p>
+                    <input name='form[id]' type="text">
+                    <p>Mot de passe:</p>
+                    <input name='form[mdp]' type="password">
+                </form>
+
+                <a href="index.php?page=inscription">S\'inscrire</a><br>
+                <a href="index.php?page=forgottenPwd">Mot de passe oublié</a>
+                HTML;
+            } else {
+                // On affiche que l'on est connecté
+                <<<HTML
+                <h1>Actuellement connecté en tant que :</h1>
+                HTML;
+                $username = $_SESSION['username'];
+                echo "<p>$username</p>";
+            }
+            ?>
         </div>
     </body>
     <footer>

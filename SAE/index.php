@@ -1,14 +1,16 @@
 <?php
 // Ce script est le "routeur central", il connecte les scripts entre eux.
 
+$page = 'authentification'; // Page par défaut
+
 // On récupère les infos 
-if (array_key_exists('page', $_POST)) {
-    $page = $_POST['page'];
+if (array_key_exists('page', $_GET)) {
+    $page = $_GET['page'];
 }
 
 // Détection de la session fermée
 if (!isset($_SESSION['uid'])) {
-    $page = 'authentification'; // TODO: seulement rediriger vers auth si on été sur une page connecté
+    // $page = 'authentification'; // TODO: seulement rediriger vers auth si on était sur une page connecté
 }
 
 // On redirige vers le bon controller
