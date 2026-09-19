@@ -1,14 +1,17 @@
-
 <?php
+
 
 function start_page($title = 'Titre ici') {
     echo '<title>' . $title . '</title>';
 }
 
 
+
+
 function end_page() {
     echo '<footer><p>Fin de page ici</p></footer>';
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -20,24 +23,52 @@ function end_page() {
     </head>
     <body>
         <div>
+<header>
 
-    <header>
-        <h1>Bienvenue sur notre site</h1>
-        <nav>
-            <a href="#">Accueil</a> | 
-            <a href="#">Authentification</a> | 
-            <a href="#">Inscription</a>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Espace d'accueil</h2>
-            <p>Voici un site bien construit et bien codé.</p>
-        </section>
-    </main>
+    <h1>Bienvenue sur notre site</h1>
+    <nav>
+        <a href="index.php?action=accueil">Accueil</a> |
+        <a href="index.php?action=authentification">Authentification</a> |
+        <a href="index.php?action=inscription">Inscription</a>
+    </nav>
+</header>
+
+
+<main>
+    <section class="site">
+        <h2>Espace d'accueil</h2>
+        <p>Découvrez notre Site!</p>
+        <div class="site-buttons">
+        </div>
+    </section>
+
+
+
+
+    <section class="features">
+        <h3>Pourquoi nous rejoindre ?</h3>
+        <div class="cards-container">
+            <?php foreach ($features as $feature): ?>
+                <article class="card">
+                    <h4><?= $feature['title'] ?></h4>
+                    <p><?= $feature['description'] ?></p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </section>
+</main>
+
+
+<footer>
+    <p>&copy; <?= date('Y') ?> - Tous droits réservés.</p>
+</footer>
+
 
     <?php end_page(); ?>
     </div>
     </body>
     </html>
+
+
+
