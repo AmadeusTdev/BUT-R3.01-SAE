@@ -4,9 +4,10 @@
 
 **Explication de l'architecture:**
 - SAE/index.php : Sert de routeur, il connecte les script controllers/views/models entre-eux
-- SAE/views/ : Répertoire contenant les vues (HTML / CSS)
-- SAE/controllers/ : Répertoire contenant les controllers (gère la logique)
-- SAE/models/ : Répertoire contenant les models (gère les requêtes SQL)
+- SAE/modules/views/ : Répertoire contenant les vues (HTML)
+- SAE/_assets/styles/ : Répertoire contenant l'apparence des vues (CSS)
+- SAE/modules/controllers/ : Répertoire contenant les controllers (gère la logique)
+- SAE/modules/models/ : Répertoire contenant les models (gère les requêtes SQL)
 
 **Pages:**
 - accueil (page d'arrivée)
@@ -24,9 +25,9 @@ Nom pour les fichiers de chaque page:
 noyau/modele.php : Gère la connection à la BD à l'aide d'une classe abstraite donc les autre modèles héritent
 
 **Wip:**
-Pour changer de page
+Pour changer de page:
 header('Location: index.php?action=accueil');
-Pour que un boutton redirige vers le routeur + choisir la page
+Pour que un boutton redirige vers le routeur + choisir la page:
 "<a href="index.php?action=profil">Aller au profil</a>"
 
 **Comment développer le projet :**
