@@ -22,7 +22,7 @@ Nom pour les fichiers de chaque page:
 - nameController (PHP) / nameView (PHP) / nameModel (SQL) / nameStyle (CSS)
 
 **Noyaux:**
-noyau/modele.php : Gère la connection à la BD à l'aide d'une classe abstraite donc les autre modèles héritent
+noyau/modele.php : Gère la connection à la BD à l'aide d'une classe abstraite dont les autre modèles héritent
 
 **Wip:**
 Pour changer de page:
