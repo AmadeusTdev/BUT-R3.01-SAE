@@ -38,3 +38,8 @@ Pour que un boutton redirige vers le routeur + choisir la page:
 - Push les changement de la branche sur le repository `git push --set-upstream origin NOM_BRANCH`
 - Créer une pull request depuis github
 - Enfin merge la branche depuis github
+
+**Figma et tâches à faire (WIP)**
+
+- lien vers le figma: https://www.figma.com/design/iS7WhzXagqkpUug2JtRhVe/Figma-basics?node-id=0-286&p=f&t=a5oPFU4l2P1qzT7s-0
+- logo en création
