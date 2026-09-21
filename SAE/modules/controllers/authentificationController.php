@@ -24,7 +24,6 @@ class authentificationController {
 
                 if ($mdp = $hash) {
                     // Informations correctes, on crée la session
-                    session_start();
                     $_SESSION['suid'] = session_id();
                     $_SESSION['username'] = $postData['form']['id'];
 
