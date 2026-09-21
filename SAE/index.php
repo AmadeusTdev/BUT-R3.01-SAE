@@ -1,5 +1,7 @@
 <?php
 // Ce script est le "routeur central", il connecte les scripts entre eux.
+session_start();
+
 require_once '_assets/includes/autoloader.php';
 
 $page = 'accueil'; // Page par défaut
@@ -7,6 +9,11 @@ $page = 'accueil'; // Page par défaut
 // On récupère les infos 
 if (array_key_exists('page', $_GET)) {
     $page = $_GET['page'];
+    
+    if ($page == 'logout') {
+        $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
+        $page = 'authentification';
+    }
 }
 
 // Détection de la session fermée

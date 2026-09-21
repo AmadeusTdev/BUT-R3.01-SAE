@@ -33,11 +33,12 @@ function end_page() {
                 HTML;
             } else {
                 // On affiche que l'on est connecté
-                <<<HTML
+                echo <<<HTML
                 <h1>Actuellement connecté en tant que :</h1>
                 HTML;
                 $username = $_SESSION['username'];
                 echo "<p>$username</p>";
+                echo '<a href="index.php?page=logout">Se déconnecter</a><br>';
             }
             ?>
         </div>
