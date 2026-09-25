@@ -20,22 +20,23 @@ class inscriptionController {
                 isset($postData['form']['nom']) &&
                 isset($postData['form']['email']) &&
                 isset($postData['form']['mdp']) &&
-                isset($postData['form']['mdp2']))
+                isset($postData['form']['mdp2']) &&
+                isset($postData['form']['adress']))
                 {
                 // Vérification de la taille du pseudo / prenom / nom
-                if (strlen($_POST['form']['pseudo']) > 20) {
+                if (strlen($postData['form']['pseudo']) > 20) {
                     $bad_pseudo = "<p class='error'>le pseudonyme doit être inférieur ou égale à 20 caractères</p>";
-                } elseif (strlen($_POST['form']['pseudo']) == 0) {
+                } elseif (strlen($postData['form']['pseudo']) == 0) {
                     $bad_pseudo = "<p class='error'>Veuillez entrer un pseudonyme</p>";
                 }
-                if (strlen($_POST['form']['prenom']) > 30) {
+                if (strlen($postData['form']['prenom']) > 30) {
                     $bad_prenom = "<p class='error'>le prenom doit être inférieur ou égale à 30 caractères</p>";
-                } elseif (strlen($_POST['form']['pseudo']) == 0) {
+                } elseif (strlen($postData['form']['pseudo']) == 0) {
                     $bad_prenom = "<p class='error'>Veuillez entrer le prenom</p>";
                 }
-                if (strlen($_POST['form']['nom']) > 30) {
+                if (strlen($postData['form']['nom']) > 30) {
                     $bad_nom = "<p class='error'>le nom doit être inférieur ou égale à 30 caractères</p>";
-                } elseif (strlen($_POST['form']['pseudo']) == 0) {
+                } elseif (strlen($postData['form']['pseudo']) == 0) {
                     $bad_nom = "<p class='error'>Veuillez entrer le nom</p>";
                 }
     
@@ -48,7 +49,7 @@ class inscriptionController {
                 if ($postData['form']['mdp'] !== $postData['form']['mdp2']) {
                     // Les deux mots de passe entrées ne sont pas exactement similaire
                     $notMatch_password = "<p class='error'>Le mot de passe entré est différent</p>";
-                } elseif (strlen($_POST['form']['mdp']) == 0) {
+                } elseif (strlen($postData['form']['mdp']) == 0) {
                     $notMatch_password = "<p class='error'>Veuillez entrer un mot de passe</p>";
                 }
     
@@ -57,11 +58,33 @@ class inscriptionController {
                     // L'utilisateur n'a pas accepté les conditions d'utilisation
                     $notAccepted_conditions = "<p class='error'>Veuillez accepter les conditions d'utilisation</p>";
                 }
+
+                // Vérification addresse
+                if (strlen($postData['form']['adress']) == 0) {
+                    // L'utilisateur n'a pas entré d'addresse
+                    $bad_adress = "<p class='error'>Veuillez entrer une addresse</p>";
+                }
+
+                // Vérification de si l'email est déjà utilisé dans la BD
+                require_once __DIR__ . '/../../noyau/model.php';
+                require_once __DIR__ . '/../models/inscriptionModel.php';
+                $model = new \InscriptionModel();
+                // $alreadyUsedEmail = $model->verifyEmail();
+                $alreadyUsedEmail = false;
     
                 // Vérification globale
-                if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions)) {
+                if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress) && ($alreadyUsedEmail != true)) {
                     // On enregistre les données de l'utilisateur dans la BD
-    
+                    $model->register(
+                        $postData['form']['pseudo'],
+                        $postData['form']['prenom'],
+                        $postData['form']['nom'],
+                        $postData['form']['email'],
+                        $postData['form']['mdp'],
+                        $postData['form']['phone'],
+                        $postData['form']['adress'],
+                    );
+
                     // On démarre la session
                     $_SESSION['suid'] = session_id();
                     $_SESSION['username'] = $postData['form']['pseudo'];

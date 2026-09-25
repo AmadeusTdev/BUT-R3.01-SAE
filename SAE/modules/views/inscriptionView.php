@@ -45,13 +45,20 @@ function end_page() {
                 <?php if (isset($notMatch_password)) {
                     echo $notMatch_password;} ?>
                 
+                <!-- Phone number -->
+                <p>Numéro de téléphone (optionel):</p>
+                <input name='form[phone]' type="tel">
+
+                <!-- Adress -->
+                <p>Addresse:</p>
+                <input name='form[adress]' type="text">
+                <?php if (isset($bad_adress)) {
+                    echo $bad_adress;} ?>
+
                 <p>Conditions générales:</p>
                 <input name='form[generalCondition]' type="checkbox">
                 <?php if (isset($notAccepted_conditions)) {
                     echo $notAccepted_conditions;} ?>
-                
-                <!-- Phone number -->
-                <!-- Adress -->
                 
                 <input type="submit">
             </form>
