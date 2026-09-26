@@ -1,5 +1,5 @@
 <?php
-
+// test de la classe abstraite pour la connexion a la BD
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
