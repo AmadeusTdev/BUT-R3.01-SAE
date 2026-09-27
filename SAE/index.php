@@ -2,6 +2,7 @@
 // Ce script est le "routeur central", il connecte les scripts entre eux.
 session_start();
 
+require_once '_assets/utils/utils.inc.php';
 require_once '_assets/includes/autoloader.php';
 
 $page = 'accueil'; // Page par défaut

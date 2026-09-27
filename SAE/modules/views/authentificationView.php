@@ -1,12 +1,3 @@
-<?php
-function start_page() {
-    echo '<title>Titre ici</title>';
-}
-function end_page() {
-    echo '<p>Fin de page ici</p>';
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -15,21 +6,27 @@ function end_page() {
         <?php start_page(); ?>
     </head>
     <body>
+        <header>
+            <?php navigation(); ?>
+        </header>
         <div>
             <?php
             if (!isset($_SESSION['suid'])) {
                 // On affiche le formulaire et les liens pour s'inscrire ou récupérer son mot de passe si on est pas connecté
                 echo <<<HTML
-                <h1>Se connecter :</h1>
-                <form method='post' class="form_bg" action="index.php?page=authentification">
-                    <p>Login:</p>
-                    <input name='form[id]' type="text">
-                    <p>Mot de passe:</p>
-                    <input name='form[mdp]' type="password">
-                </form>
+                <div class="cont">
+                    <h1>Se connecter</h1>
+                    <form method='post' class="form_bg" action="index.php?page=authentification">
+                        <p>Email:</p>
+                        <input name='form[email]' class="input" type="text">
+                        <p>Mot de passe:</p>
+                        <input name='form[mdp]' class="input" type="password">
+                        <input type="submit" class="submit">
+                    </form>
 
-                <a href="index.php?page=inscription">S\'inscrire</a><br>
-                <a href="index.php?page=forgottenPwd">Mot de passe oublié</a>
+                    <a href="index.php?page=inscription" class="link">S'inscrire</a><br>
+                    <a href="index.php?page=forgottenPwd" class="link">Mot de passe oublié</a>
+                </div>
                 HTML;
             } else {
                 // On affiche que l'on est connecté
