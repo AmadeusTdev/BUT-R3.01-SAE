@@ -74,23 +74,40 @@ class inscriptionController {
     
                 // Vérification globale
                 if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress) && ($alreadyUsedEmail != true)) {
+
+                    // On harge le modèle
+                    require_once __DIR__ . '/../models/inscriptionModel.php';
+
+                    // On hache le mot de passe ici dans le contrôleur
+                    $hash = password_hash($postData['form']['mdp'], PASSWORD_DEFAULT);
+
+                    // On envoie null si le téléphone est vide
+                    $phone = !empty($postData['form']['phone']) ? $postData['form']['phone'] : null;
+
                     // On enregistre les données de l'utilisateur dans la BD
-                    $model->register(
+                    $reussite = \InscriptionModel::register(
                         $postData['form']['pseudo'],
                         $postData['form']['prenom'],
                         $postData['form']['nom'],
                         $postData['form']['email'],
-                        $postData['form']['mdp'],
-                        $postData['form']['phone'],
-                        $postData['form']['adress'],
+                        $hash,
+                        $phone,
+                        $postData['form']['adress']
                     );
 
+
+                    if ($reussite) {                    
                     // On démarre la session
                     $_SESSION['suid'] = session_id();
                     $_SESSION['username'] = $postData['form']['pseudo'];
     
                     // On recharge la page pour aller sur authentification
                     header('Location: index.php?page=authentification');
+                    exit; //sert a ne plus charger la page apres la redirection
+                    } else {
+                        // Erreur lors de l'enregistrement dans la BD
+                        $error_database_message = "<p class='error'>Une erreur est survenue lors de l'inscription. Veuillez réessayer.</p>";
+                    }
                 }
     
             }

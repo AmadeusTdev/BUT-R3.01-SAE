@@ -10,11 +10,10 @@ class InscriptionModel extends Model {
         string $firstName,
         string $lastName,
         string $email,
-        string $password,
+        string $hashPassword,
         ?string $phoneNumber,
         string $adress): bool {
 
-        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
         
