@@ -3,6 +3,7 @@ parameters:
     paths:
         - public/index.php
         - modules
+        
         - kernel
         - _assets/includes
         - _assets/utils
