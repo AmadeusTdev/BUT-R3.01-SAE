@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="SAE">
+    <rule ref="PSR12"/>
+    <file>SAE/index.php</file>
+    <file>SAE/modules</file>
+    <file>SAE/noyau</file>
+    <file>SAE/_assets/includes</file>
+    <file>SAE/_assets/utils</file>
+    <file>SAE/tests</file>
+</ruleset>

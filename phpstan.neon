@@ -1,0 +1,20 @@
+parameters:
+    level: 1
+    paths:
+        - SAE/index.php
+        - SAE/modules
+        - SAE/noyau
+        - SAE/_assets/includes
+        - SAE/_assets/utils
+    ignoreErrors:
+    # Faux positifs permanents : les vues reçoivent leurs variables du contrôleur
+    -
+        identifier: variable.undefined
+        path: SAE/modules/views/*
+    # TEMPORAIRE : chemins relatifs à remplacer par __DIR__ (à retirer ensuite)
+    -
+        identifier: requireOnce.fileNotFound
+        path: SAE/modules/controllers/*
+    -
+        identifier: require.fileNotFound
+        path: SAE/modules/controllers/*

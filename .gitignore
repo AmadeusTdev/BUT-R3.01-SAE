@@ -1,0 +1,5 @@
+vendor
+vendor/
+coverage/
+.phpunit.cache/
+.phpunit.result.cache
