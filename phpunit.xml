@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="SAE/tests/bootstrap.php" colors="true">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="unit"><directory>SAE/tests</directory></testsuite>
+        <testsuite name="unit"><directory>tests</directory></testsuite>
     </testsuites>
     <source>
         <include>
-            <directory>SAE/modules</directory>
-            <directory>SAE/noyau</directory>
+            <directory>modules</directory>
+            <directory>noyau</directory>
         </include>
     </source>
 </phpunit>
