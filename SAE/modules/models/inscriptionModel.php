@@ -37,6 +37,18 @@ class InscriptionModel extends Model {
             ':adress'        => $adress,
         ]);
     }
+
+
+    public static function emailExists(string $email): bool {
+        $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+        $stmt = self::getPdo()->prepare($sql);
+        $stmt->execute([':email' => $email]);
+
+        // fetchColumn() récupère le résultat du COUNT(*) si plus de 1 renvoie true sinon false
+        return (int) $stmt->fetchColumn() > 0;
+    }
+
+
 }
         
         
