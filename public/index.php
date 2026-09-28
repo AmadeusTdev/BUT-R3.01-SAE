@@ -2,10 +2,10 @@
 // Ce script est le "routeur central", il connecte les scripts entre eux.
 session_start();
 
-require_once '_assets/utils/utils.inc.php';
-require_once '_assets/includes/autoloader.php';
+require_once __DIR__ . '/../_assets/utils/utils.inc.php';
+require_once __DIR__ . '/../_assets/includes/autoloader.php';
 
-$page = 'accueil'; // Page par défaut
+$page = 'home'; // Page par défaut
 
 // On récupère les infos 
 if (array_key_exists('page', $_GET)) {
@@ -13,16 +13,19 @@ if (array_key_exists('page', $_GET)) {
     
     if ($page == 'logout') {
         $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
-        $page = 'authentification';
+        $page = 'login'; // On redirige vers la page de login
     }
 }
 
 // Détection de la session fermée
 if (!isset($_SESSION['uid'])) {
-    // $page = 'authentification'; // TODO: seulement rediriger vers auth si on était sur une page connecté
+    // $page = 'login'; // TODO: seulement rediriger vers auth si on était sur une page connecté
 }
 
+
+
 // On redirige vers le bon controller
+
 if (file_exists('modules/controllers/' . $page . 'Controller.php')) {
 
     $path = 'modules\\controllers\\' . $page . 'Controller';
@@ -31,7 +34,7 @@ if (file_exists('modules/controllers/' . $page . 'Controller.php')) {
 
 } else {
     // Si la page n'existe pas on redirige vers l'accueil
-    $path = 'modules\\controllers\\accueilController';
+    $path = 'modules\\controllers\\homeController';
     $controller = new $path();
     $controller->execute();
 }

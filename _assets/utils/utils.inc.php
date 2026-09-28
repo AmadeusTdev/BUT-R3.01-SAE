@@ -9,9 +9,9 @@ function end_page(): void {
 function navigation(): void {
     echo <<<HTML
         <nav>
-            <a href="index.php?page=accueil">Accueil</a> |
-            <a href="index.php?page=authentification">Authentification</a> |
-            <a href="index.php?page=inscription">Inscription</a>
+            <a href="index.php?page=home">Accueil</a> |
+            <a href="index.php?page=login">Authentification</a> |
+            <a href="index.php?page=signup">Inscription</a>
         </nav>
     HTML;
 }
