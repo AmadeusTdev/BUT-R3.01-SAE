@@ -43,6 +43,14 @@ class inscriptionController {
                 // Vérification email
                 if (!preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $postData['form']['email'])) {
                     $bad_email = "<p class='error'>L'email est incorrect</p>";
+                } else {
+                    // Vérification si l'email est déjà utilisé dans la BD
+                    require_once __DIR__ . '/../models/inscriptionModel.php';
+                    if (\InscriptionModel::emailExists($postData['form']['email'])) {
+                    $bad_email = "<p class='error'>Cet email est déjà associé à un compte</p>";
+    
+                    
+                    }
                 }
     
                 // Vérification mdp
@@ -65,15 +73,10 @@ class inscriptionController {
                     $bad_adress = "<p class='error'>Veuillez entrer une addresse</p>";
                 }
 
-                // Vérification de si l'email est déjà utilisé dans la BD
-                require_once __DIR__ . '/../../noyau/model.php';
-                require_once __DIR__ . '/../models/inscriptionModel.php';
-                $model = new \InscriptionModel();
-                // $alreadyUsedEmail = $model->verifyEmail();
-                $alreadyUsedEmail = false;
+               
     
                 // Vérification globale
-                if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress) && ($alreadyUsedEmail != true)) {
+                if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress)) {
 
                     // On harge le modèle
                     require_once __DIR__ . '/../models/inscriptionModel.php';
