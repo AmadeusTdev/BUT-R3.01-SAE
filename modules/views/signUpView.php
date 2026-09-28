@@ -11,7 +11,7 @@
         </header>
         <div class="cont">
             <h1>S'inscrire</h1>
-            <form method='post' class="form_bg" action="../../public/index.php?page=signUp">
+            <form method='post' class="form_bg" action="index.php?page=signUp">
                 <p class="inpt">Pseudo:</p>
                 <input name='form[pseudo]' class="input" type="text">
                 <?php if (isset($bad_pseudo)) {

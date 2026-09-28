@@ -78,7 +78,7 @@ class SignUpController {
                 // Vérification globale
                 if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress)) {
 
-                    // On harge le modèle
+                    // On charge le modèle
                     require_once __DIR__ . '/../models/signUpModel.php';
 
                     // On hache le mot de passe ici dans le contrôleur
