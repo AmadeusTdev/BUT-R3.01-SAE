@@ -26,7 +26,7 @@ if (!isset($_SESSION['uid'])) {
 
 // On redirige vers le bon controller
 
-if (file_exists('modules/controllers/' . $page . 'Controller.php')) {
+if (file_exists(__DIR__ . '/../modules/controllers/' . $page . 'Controller.php')) {
 
     $path = 'modules\\controllers\\' . $page . 'Controller';
     $controller = new $path();
