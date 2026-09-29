@@ -44,3 +44,9 @@ jobs:
 
       - name: Unit tests (PHPUnit)
         run: vendor/bin/phpunit --coverage-clover coverage/clover.xml
+
+      - name: SonarQube Cloud scan
+        if: github.ref != 'refs/heads/main'
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
