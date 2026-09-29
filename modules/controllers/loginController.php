@@ -1,7 +1,7 @@
 <?php
 namespace modules\controllers;
 
-class authentificationController {
+class LoginController {
     public function execute() {
         // On vérifie le contenu du formulaire d'authentification (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['suid'])) {
@@ -16,7 +16,7 @@ class authentificationController {
 
             if (isset($postData['form']['id']) && isset($postData['form']['mdp'])) {
                 // On demande à la base de données les informations de l'utilisateur
-                require 'modules/models/authentificationModel.php';
+                require_once __DIR__ . '/../models/loginModel.php';
                 $mdp = '';
 
                 // On vérifie si les informations sont correctes
@@ -28,7 +28,7 @@ class authentificationController {
                     $_SESSION['username'] = $postData['form']['id'];
 
                     // On recharge la page
-                    header('Location: index.php?page=authentification');
+                    header('Location: index.php?page=login');
                 } else {
                     // Informations invalides
                 }
@@ -36,6 +36,6 @@ class authentificationController {
         }
 
         // On affiche le formulaire d'authentification
-        require_once 'modules/views/authentificationView.php';
+        require_once __DIR__ . '/../views/loginView.php';
     }
 }
