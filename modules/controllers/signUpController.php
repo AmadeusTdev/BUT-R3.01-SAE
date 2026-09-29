@@ -117,6 +117,6 @@ class SignUpController {
         }
     
         // On affiche le formulaire d'authentification
-        require_once '../modules/views/signUpView.php';
+        require_once __DIR__ . '/../views/signUpView.php';
     }
 }

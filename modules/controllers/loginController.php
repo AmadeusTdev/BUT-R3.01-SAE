@@ -16,7 +16,7 @@ class LoginController {
 
             if (isset($postData['form']['id']) && isset($postData['form']['mdp'])) {
                 // On demande à la base de données les informations de l'utilisateur
-                require 'modules/models/loginModel.php';
+                require_once __DIR__ . '/../models/loginModel.php';
                 $mdp = '';
 
                 // On vérifie si les informations sont correctes
@@ -36,6 +36,6 @@ class LoginController {
         }
 
         // On affiche le formulaire d'authentification
-        require_once '../modules/views/loginView.php';
+        require_once __DIR__ . '/../views/loginView.php';
     }
 }
