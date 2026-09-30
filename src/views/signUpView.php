@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="_assets/styles/inscriptionStyle.css">
+        <link rel="stylesheet" href="assets/styles/signUpStyle.css">
         <?php start_page(); ?>
     </head>
     <body>
@@ -11,7 +11,7 @@
         </header>
         <div class="cont">
             <h1>S'inscrire</h1>
-            <form method='post' class="form_bg" action="index.php?page=inscription">
+            <form method='post' class="form_bg" action="index.php?page=signUp">
                 <p class="inpt">Pseudo:</p>
                 <input name='form[pseudo]' class="input" type="text">
                 <?php if (isset($bad_pseudo)) {
@@ -56,7 +56,7 @@
                 
                 <input type="submit" class="submit">
             </form>
-            <a href="index.php?page=authentification" class="link">S'authentifier</a><br>
+            <a href="index.php?page=login" class="link">S'authentifier</a><br>
         </div>
     </body>
     <footer>

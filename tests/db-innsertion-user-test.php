@@ -3,13 +3,13 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . '/../noyau/model.php';
-require_once __DIR__ . '/../modules/models/inscriptionModel.php';
+require_once __DIR__ . '/../kernel/model.php';
+require_once __DIR__ . '/../src/models/signUpModel.php';
 
 try {
     echo "test d'insertion\n";
 
-    $reussite = InscriptionModel::register(
+    $reussite = signUpModel::register(
         'jambon beurre',
         'Jean',
         'Boris',

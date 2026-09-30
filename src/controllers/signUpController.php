@@ -1,7 +1,7 @@
 <?php
-namespace modules\controllers;
+namespace src\controllers;
 
-class inscriptionController {
+class SignUpController {
     public function execute() {
         // On vérifie le contenu du formulaire d'inscription (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['uid'])) {
@@ -45,8 +45,8 @@ class inscriptionController {
                     $bad_email = "<p class='error'>L'email est incorrect</p>";
                 } else {
                     // Vérification si l'email est déjà utilisé dans la BD
-                    require_once __DIR__ . '/../models/inscriptionModel.php';
-                    if (\InscriptionModel::emailExists($postData['form']['email'])) {
+                    require_once __DIR__ . '/../models/signUpModel.php';
+                    if (\SignUpModel::emailExists($postData['form']['email'])) {
                     $bad_email = "<p class='error'>Cet email est déjà associé à un compte</p>";
     
                     
@@ -78,8 +78,8 @@ class inscriptionController {
                 // Vérification globale
                 if (!isset($bad_pseudo) && !isset($bad_prenom) && !isset($bad_nom) && !isset($bad_email) && !isset($notMatch_password) && !isset($notAccepted_conditions) && !isset($bad_adress)) {
 
-                    // On harge le modèle
-                    require_once __DIR__ . '/../models/inscriptionModel.php';
+                    // On charge le modèle
+                    require_once __DIR__ . '/../models/signUpModel.php';
 
                     // On hache le mot de passe ici dans le contrôleur
                     $hash = password_hash($postData['form']['mdp'], PASSWORD_DEFAULT);
@@ -88,7 +88,7 @@ class inscriptionController {
                     $phone = !empty($postData['form']['phone']) ? $postData['form']['phone'] : null;
 
                     // On enregistre les données de l'utilisateur dans la BD
-                    $reussite = \InscriptionModel::register(
+                    $reussite = \SignUpModel::register(
                         $postData['form']['pseudo'],
                         $postData['form']['prenom'],
                         $postData['form']['nom'],
@@ -105,7 +105,7 @@ class inscriptionController {
                     $_SESSION['username'] = $postData['form']['pseudo'];
     
                     // On recharge la page pour aller sur authentification
-                    header('Location: index.php?page=authentification');
+                    header('Location: index.php?page=login');
                     exit; //sert a ne plus charger la page apres la redirection
                     } else {
                         // Erreur lors de l'enregistrement dans la BD
@@ -117,6 +117,6 @@ class inscriptionController {
         }
     
         // On affiche le formulaire d'authentification
-        require_once 'modules/views/inscriptionView.php';
+        require_once __DIR__ . '/../views/signUpView.php';
     }
 }

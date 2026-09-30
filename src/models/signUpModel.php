@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../noyau/model.php';
+require_once __DIR__ . '/../../kernel/model.php';
 
-class InscriptionModel extends Model {
+class SignUpModel extends Model {
     // Héritage de la classe paret du super model noyau
 
 
