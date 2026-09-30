@@ -3,11 +3,15 @@ namespace src\controllers;
 
 class LoginController {
     public function execute() : void {
+        $error = null;
+
+        // Gestion de la déconnexion
         if (array_key_exists('action', $_GET)) {
             if ($_GET['action'] == 'logout') {
                 $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
             }
         }
+
         
         // On vérifie le contenu du formulaire d'authentification (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['suid'])) {
@@ -20,23 +24,22 @@ class LoginController {
             ];
             $postData = filter_input_array(INPUT_POST, $args);
 
-            if (isset($postData['form']['id']) && isset($postData['form']['mdp'])) {
-                // On demande à la base de données les informations de l'utilisateur
+            if (isset($postData['form']['email']) && isset($postData['form']['mdp'])) {
+                // On charge le modèle et on cherche l'utilisateur par email
                 require_once __DIR__ . '/../models/loginModel.php';
-                $mdp = '';
+                $user = \LoginModel::getUserByEmail($postData['form']['email']);
 
-                // On vérifie si les informations sont correctes
-                $hash = password_hash($postData['form']['mdp'], PASSWORD_DEFAULT);
-
-                if ($mdp = $hash) {
-                    // Informations correctes, on crée la session
+                if ($user && password_verify($postData['form']['mdp'], $user['hash_password'])) {
+                    // informations correctes, on cree la session
                     $_SESSION['suid'] = session_id();
-                    $_SESSION['username'] = $postData['form']['id'];
+                    $_SESSION['username'] = $user['login'];
 
-                    // On recharge la page
-                    header('Location: index.php?page=login');
+                    // on redirige vers la page d'accueil
+                    header('Location: index.php?page=home');
+                    exit;
                 } else {
-                    // Informations invalides
+                    // informations invalide
+                    $error = "<p class='error'>Email ou mot de passe incorrect</p>";
                 }
             }
         }
