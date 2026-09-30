@@ -42,7 +42,7 @@
 │   └── dump.sql
 ├── kernel
 │   └── model.php
-├── modules
+├── src
 │   ├── controllers
 │   ├── models
 │   └── views
@@ -70,10 +70,10 @@
 ## Liste des pages et conventions:
 **Pages de l'Application**
 - `public/index.php` : Sert de routeur, il connecte les script controllers/views/models entre-eux
-- `modules/views/` : Répertoire contenant les vues (HTML)
+- `src/views/` : Répertoire contenant les vues (HTML)
 - `_assets/styles/` : Répertoire contenant l'apparence des vues (CSS/SCSS)
-- `modules/controllers/` : Répertoire contenant les controllers (gère la logique)
-- `modules/models/` : Répertoire contenant les models (gère les requêtes SQL)
+- `src/controllers/` : Répertoire contenant les controllers (gère la logique)
+- `src/models/` : Répertoire contenant les models (gère les requêtes SQL)
 
 **Pages:**
 - `accueil` (page d'arrivée)
