@@ -2,7 +2,7 @@
 <ruleset name="BUT-R3.01-SAE">
     <rule ref="PSR12"/>
     <file>public/index.php</file>
-    <file>modules</file>
+    <file>src</file>
     <file>noyau</file>
     <file>_assets/includes</file>
     <file>_assets/utils</file>

@@ -5,7 +5,7 @@
     </testsuites>
     <source>
         <include>
-            <directory>modules</directory>
+            <directory>src</directory>
             <directory>kernel</directory>
         </include>
     </source>

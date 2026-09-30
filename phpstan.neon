@@ -2,7 +2,7 @@ parameters:
     level: 1
     paths:
         - public/index.php
-        - modules
+        - src
         - kernel
         - _assets/includes
         - _assets/utils
@@ -10,5 +10,5 @@ parameters:
     # Faux positifs permanents : les vues reçoivent leurs variables du contrôleur
     -
         identifier: variable.undefined
-        path: modules/views/*
+        path: src/views/*
 

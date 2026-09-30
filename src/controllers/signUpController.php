@@ -1,5 +1,5 @@
 <?php
-namespace modules\controllers;
+namespace src\controllers;
 
 class SignUpController {
     public function execute() {

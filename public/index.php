@@ -26,15 +26,15 @@ if (!isset($_SESSION['uid'])) {
 
 // On redirige vers le bon controller
 
-if (file_exists(__DIR__ . '/../modules/controllers/' . $page . 'Controller.php')) {
+if (file_exists(__DIR__ . '/../src/controllers/' . $page . 'Controller.php')) {
 
-    $path = 'modules\\controllers\\' . $page . 'Controller';
+    $path = 'src\\controllers\\' . $page . 'Controller';
     $controller = new $path();
     $controller->execute();
 
 } else {
     // Si la page n'existe pas on redirige vers l'accueil
-    $path = 'modules\\controllers\\homeController';
+    $path = 'src\\controllers\\homeController';
     $controller = new $path();
     $controller->execute();
 }
