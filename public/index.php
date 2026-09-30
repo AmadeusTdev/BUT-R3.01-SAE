@@ -7,14 +7,10 @@ require_once __DIR__ . '/../_assets/includes/autoloader.php';
 
 $page = 'home'; // Page par défaut
 
+
 // On récupère les infos 
 if (array_key_exists('page', $_GET)) {
     $page = $_GET['page'];
-    
-    if ($page == 'logout') {
-        $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
-        $page = 'login'; // On redirige vers la page de login
-    }
 }
 
 // Détection de la session fermée

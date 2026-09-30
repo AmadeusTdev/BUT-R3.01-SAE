@@ -12,6 +12,7 @@ class LoginController {
             }
         }
 
+        
         // On vérifie le contenu du formulaire d'authentification (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['suid'])) {
             // On filtre les entrées pour éviter les injections SQL
