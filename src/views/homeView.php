@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="_assets/styles/authentificationStyle.css">
+        <link rel="stylesheet" href="../../public/assets/styles/loginStyle.css">
         <?php start_page(); ?>
     </head>
     <body>
