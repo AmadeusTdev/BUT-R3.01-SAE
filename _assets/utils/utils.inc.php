@@ -11,7 +11,8 @@ function navigation(): void {
         <nav>
             <a href="index.php?page=home">Accueil</a> |
             <a href="index.php?page=login">Authentification</a> |
-            <a href="index.php?page=signUp">Inscription</a>
+            <a href="index.php?page=signUp">Inscription</a> |
+            <a href="index.php?page=forgottenPwd">Mot de passe oublié</a>
         </nav>
     HTML;
 }

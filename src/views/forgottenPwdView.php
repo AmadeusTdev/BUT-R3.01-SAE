@@ -1,45 +1,27 @@
-
-
-
-
-<?php
-function start_page() {
-    // Email = Chaine de caractères vide 
-    echo '<title>Titre ici</title>';
-}
-function end_page() {
-    echo '<p>Fin de page ici</p>';
-}
-?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mot de passe oublié</title>
+        <link rel="stylesheet" href="assets/styles/forgottenPwdStyle.css">
+        <?php start_page(); ?>
     </head>
     <body>
-        <div>Mot de passe oublié</div>
-        <form method="post">
+        <header>
+            <?php navigation(); ?>
+        </header>
+        <h1>Mot de passe oublié</h1>
+        <form method="post" action="index.php?page=forgottenPwd">
 
-      
-        <?php if (!empty($message)): ?>
-            <p class="alert"><?= $message ?></p>
-        <?php endif; ?>
-            <?php
-                if (isset($er_mail)){
-            ?>
-                <div><?= $er_mail ?></div>
-            <?php   
-                }
-            ?>
-            <input type="email" placeholder="Adresse mail" name="mail" value="
+            <input type="email" placeholder="Adresse mail" name="form_email" value="
             <?php if(isset($mail)){ echo $mail; }?>" required>
             <button type="submit" name="oublie">Envoyer</button>
+            <?php if (isset($bad_email)) {
+                echo $bad_email;
+            } ?>
         </form>
     </body>
+    <footer>
+        <p><?php end_page(); ?><p>
+    </footer>
 </html>
