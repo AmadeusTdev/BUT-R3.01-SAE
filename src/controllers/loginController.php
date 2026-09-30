@@ -3,7 +3,7 @@ namespace src\controllers;
 
 class LoginController {
     public function execute() : void {
-        if (isset($action) && $action == 'logout') {
+        if ($action == 'logout') {
             $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
         }
         
