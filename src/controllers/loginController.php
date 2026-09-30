@@ -2,8 +2,15 @@
 namespace src\controllers;
 
 class LoginController {
-    public function execute() {
+    public function execute() : void {
         $error = null;
+
+        // Gestion de la déconnexion
+        if (array_key_exists('action', $_GET)) {
+            if ($_GET['action'] == 'logout') {
+                $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
+            }
+        }
 
         // On vérifie le contenu du formulaire d'authentification (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['suid'])) {
