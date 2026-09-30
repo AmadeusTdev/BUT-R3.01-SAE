@@ -64,3 +64,7 @@ h1 {
 .link:hover {
     color: #577482;
 }
+
+.error {
+    color: red;
+}

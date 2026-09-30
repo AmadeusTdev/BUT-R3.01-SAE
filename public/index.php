@@ -10,11 +10,9 @@ $page = 'home'; // Page par défaut
 // On récupère les infos 
 if (array_key_exists('page', $_GET)) {
     $page = $_GET['page'];
-    
-    if ($page == 'logout') {
-        $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
-        $page = 'login'; // On redirige vers la page de login
-    }
+}
+if (array_key_exists('action', $_GET)) {
+    $action = $_GET['action'];
 }
 
 // Détection de la session fermée

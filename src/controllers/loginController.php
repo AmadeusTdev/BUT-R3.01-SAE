@@ -2,7 +2,11 @@
 namespace src\controllers;
 
 class LoginController {
-    public function execute() {
+    public function execute() : void {
+        if (isset($action) && $action == 'logout') {
+            $_SESSION = array(); // On vide la variable superglobale session pour se déconnecter
+        }
+        
         // On vérifie le contenu du formulaire d'authentification (si on est pas déjà connecté)
         if (isset($_POST['form']) && !isset($_SESSION['suid'])) {
             // On filtre les entrées pour éviter les injections SQL
