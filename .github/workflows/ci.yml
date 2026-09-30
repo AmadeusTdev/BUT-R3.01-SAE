@@ -50,3 +50,14 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+            - name: Debug repository files
+        run: |
+          echo "=== Répertoire courant ==="
+          pwd
+          echo "=== Contenu du dépôt ==="
+          ls -la
+          echo "=== Contenu de noyau ==="
+          ls -la noyau
+          echo "=== Vérification du fichier ==="
+          test -f noyau/model.php && echo "model.php TROUVÉ" || echo "model.php ABSENT"
