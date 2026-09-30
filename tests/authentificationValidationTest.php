@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class AuthValidationTest extends TestCase
+class authentificationValidationTest extends TestCase
 {
     private function isValidCredentials(string $email, string $password): bool
     {
