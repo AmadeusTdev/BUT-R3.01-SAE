@@ -49,6 +49,11 @@ class UserValidationTest extends TestCase
         $this->assertFalse($this->isValidLogin('ab'));
     }
 
+    public function testLoginWithLeadingAndTrailingSpacesIsTrimmed(): void
+    {
+    $this->assertTrue($this->isValidLogin('  jules  '));
+    }
+
     public function testValidLoginIsAccepted(): void
     {
         $this->assertTrue($this->isValidLogin('jules'));
