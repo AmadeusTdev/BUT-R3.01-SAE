@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.ALWAYSDATA_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Deploy with rsync
+        env:
+          DEPLOY_USER: ${{ secrets.ALWAYSDATA_USER }}
+          DEPLOY_HOST: ${{ secrets.ALWAYSDATA_HOST }}
+        run: |
+          rsync -avz --delete \
+            --chmod=Dg+rwx,Fg+rw \
+            --exclude='.git*' --exclude='.github' --exclude='tests' \
+            --exclude='config/database.php' --exclude='logs' \
+            --exclude='phpunit.xml' --exclude='phpstan.neon' --exclude='phpstan-baseline.neon' \
+            --exclude='phpcs.xml' --exclude='sonar-project.properties' \
+            --exclude='coverage' \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:www/"
