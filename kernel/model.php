@@ -5,13 +5,9 @@ abstract class Model {
 
     protected static function getPdo(): PDO {
         if (self::$pdo === null) {
-            $host = 'postgresql-mathiasm.alwaysdata.net';
-            $port = '5432';
-            $dbname = 'mathiasm_web_bd';
-            $user = 'mathiasm_bd_web_admin';
-            $password = '1mdpphp';
+            $config = require __DIR__ . '/../config/database.php';
 
-            $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+            $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
 
             try {
                 self::$pdo = new PDO($dsn, $user, $password, [
@@ -20,7 +16,8 @@ abstract class Model {
                     PDO::ATTR_EMULATE_PREPARES   => false,
                 ]);
             } catch (PDOException $e) {
-                die('Erreur de connexion : ' . $e->getMessage());
+                error_log('Erreur de connexion PDO : ' . $e->getMessage());
+                throw new RuntimeException('Impossible de se connecter à la base de données.');
             }
         }
 
