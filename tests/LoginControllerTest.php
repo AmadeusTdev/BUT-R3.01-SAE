@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
 class LoginControllerTest extends TestCase
 {
@@ -42,6 +43,7 @@ class LoginControllerTest extends TestCase
         $this->assertStringContainsString("name='form[mdp]'", $html);
     }
 
+    #[RunInSeparateProcess]
     public function testLogoutClearsSessionAndShowsLoginForm(): void
     {
         $_SESSION = ['suid' => 'session-id', 'username' => 'jules'];
