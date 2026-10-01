@@ -11,6 +11,7 @@ class LoginControllerTest extends TestCase
     protected function setUp(): void
     {
         require_once __DIR__ . '/../_assets/utils/utils.inc.php';
+        require_once __DIR__ . '/../src/controllers/loginController.php';
 
         $this->previousPost = $_POST;
         $this->previousGet = $_GET;
@@ -30,8 +31,11 @@ class LoginControllerTest extends TestCase
     public function testLoginControllerRendersLoginView(): void
     {
         ob_start();
-        (new \src\controllers\LoginController())->execute();
-        $html = ob_get_clean();
+        try {
+            (new \src\controllers\LoginController())->execute();
+        } finally {
+            $html = ob_get_clean();
+        }
 
         $this->assertStringContainsString('<h1>Se connecter</h1>', $html);
         $this->assertStringContainsString("name='form[email]'", $html);
@@ -44,8 +48,11 @@ class LoginControllerTest extends TestCase
         $_GET = ['action' => 'logout'];
 
         ob_start();
-        (new \src\controllers\LoginController())->execute();
-        $html = ob_get_clean();
+        try {
+            (new \src\controllers\LoginController())->execute();
+        } finally {
+            $html = ob_get_clean();
+        }
 
         $this->assertSame([], $_SESSION);
         $this->assertStringContainsString("name='form[email]'", $html);

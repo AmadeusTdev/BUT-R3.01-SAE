@@ -11,6 +11,7 @@ class SignUpControllerTest extends TestCase
     protected function setUp(): void
     {
         require_once __DIR__ . '/../_assets/utils/utils.inc.php';
+        require_once __DIR__ . '/../src/controllers/signUpController.php';
 
         $this->previousPost = $_POST;
         $this->previousGet = $_GET;
@@ -30,8 +31,11 @@ class SignUpControllerTest extends TestCase
     public function testSignupControllerRendersSignupView(): void
     {
         ob_start();
-        (new \src\controllers\SignUpController())->execute();
-        $html = ob_get_clean();
+        try {
+            (new \src\controllers\SignUpController())->execute();
+        } finally {
+            $html = ob_get_clean();
+        }
 
         $this->assertStringContainsString("<h1>S'inscrire</h1>", $html);
         $this->assertStringContainsString("name='form[pseudo]'", $html);
