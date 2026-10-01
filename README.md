@@ -203,4 +203,4 @@ Configurés dans *Settings > Secrets and variables > Actions* :
 
 ## Figma et tâches à faire (WIP)
 
-- [Consulter l'interface sur Figma](https://www.figma.com/design/iS7WhzXagqkpUug2JtRhVe/Figma-basics?node-id=0-286&p=f&t=a5oPFU4l2P1qzT7s-0)
+- [Consulter l'interface sur Figma](https://www.figma.com/site/8oDWB7jazMQrtPeLXBzpkZ/Maquette-Qui-est-ce?node-id=0-1&p=f&t=6JdjGxCOOWHijIBQ-0)
