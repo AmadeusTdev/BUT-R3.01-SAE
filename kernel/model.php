@@ -10,7 +10,7 @@ abstract class Model {
             $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
 
             try {
-                self::$pdo = new PDO($dsn, $user, $password, [
+                self::$pdo = new PDO($dsn, $config['user'], $config['password'], [
                     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                     PDO::ATTR_EMULATE_PREPARES   => false,
