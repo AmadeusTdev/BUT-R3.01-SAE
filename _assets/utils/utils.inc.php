@@ -1,5 +1,6 @@
 <?php
 function start_page(): void {
+    echo '<link rel="icon" type="image/x-icon" href="favicon.ico">';
     echo '<title>Qui est-ce?</title>';
 }
 function end_page(): void {

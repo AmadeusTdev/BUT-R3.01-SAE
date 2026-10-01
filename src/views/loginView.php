@@ -23,7 +23,13 @@
                         <input name='form[mdp]' class="input" type="password">
                         <input type="submit" class="submit">
                     </form>
+                HTML;
 
+                if (isset($error)) {
+                    echo $error;
+                }
+
+                echo <<<HTML
                     <a href="index.php?page=signUp" class="link">S'inscrire</a><br>
                     <a href="index.php?page=forgottenPwd" class="link">Mot de passe oublié</a>
                 </div>
