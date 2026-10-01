@@ -38,6 +38,7 @@ jobs:
           DEPLOY_HOST: ${{ secrets.ALWAYSDATA_HOST }}
         run: |
           rsync -avz --delete \
+            --omit-dir-times \
             --chmod=Dg+rwx,Fg+rw \
             --exclude='.git*' --exclude='.github' --exclude='tests' \
             --exclude='config/database.php' --exclude='logs' \
