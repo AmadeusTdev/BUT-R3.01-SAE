@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="BUT-R3.01-SAE">
+    <rule ref="PSR12"/>
+    <file>public/index.php</file>
+    <file>src</file>
+    <file>kernel</file>
+    <file>_assets/includes</file>
+    <file>_assets/utils</file>
+    <file>tests</file>
+</ruleset>

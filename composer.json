@@ -1,0 +1,17 @@
+{
+    "name": "quiestce/website",
+    "description": "SAE R3.01",
+    "type": "project",
+    "license": "proprietary",
+    
+    "require-dev": {
+        "phpunit/phpunit": "^13.3",
+        "phpstan/phpstan": "^2.2",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "scripts": {
+        "stan": "phpstan analyse --memory-limit=512M",
+        "cs": "phpcs",
+        "test": "phpunit"
+    }
+}

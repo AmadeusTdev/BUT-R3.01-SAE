@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+  workflow_call:
+
+# Droits minimaux : la CI n'a besoin que de lire le dépôt
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # utile pour Sonar à l'étape suivante
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo_sqlite, pdo_pgsql
+          coverage: pcov
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Validate composer.json
+        run: composer validate
+
+      - name: Security audit of dependencies
+        run: composer audit
+
+      - name: Coding standards (PHPCS)
+        run: composer cs
+        continue-on-error: true   # temporaire, jusqu'au nettoyage PSR-12
+
+      - name: Static analysis (PHPStan)
+        run: composer stan
+
+      - name: Unit tests (PHPUnit)
+        run: vendor/bin/phpunit --coverage-clover coverage/clover.xml
+
+      - name: SonarQube Cloud scan
+        if: github.ref != 'refs/heads/main'
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
