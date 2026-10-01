@@ -40,11 +40,11 @@
                     echo $notMatch_password;} ?>
                 
                 <!-- Phone number -->
-                <p class="inpt">Numéro de téléphone (optionel):</p>
+                <p class="inpt">Numéro de téléphone (optionnel):</p>
                 <input name='form[phone]' class="input" type="tel">
 
                 <!-- Adress -->
-                <p class="inpt">Addresse:</p>
+                <p class="inpt">Adresse:</p>
                 <input name='form[adress]' class="input" type="text">
                 <?php if (isset($bad_adress)) {
                     echo $bad_adress;} ?>
