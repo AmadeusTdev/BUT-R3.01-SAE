@@ -10,18 +10,34 @@
         <header>
             <?php navigation(); ?>
         </header>
-        <h1>Mot de passe oublié</h1>
-        <form method="post" action="index.php?page=forgottenPwd">
+        <div class="cont">
+            <h1>Mot de passe oublié</h1>
+            <?php if (!isset($success)) { ?>
+                <form method="post" class="form_bg" action="index.php?page=forgottenPwd">
+                    <p>Email :</p>
+                    <input name="form[email]" class="input" type="email" placeholder="Adresse mail" required>
 
-            <input type="email" placeholder="Adresse mail" name="form_email" value="
-            <?php if(isset($mail)){ echo $mail; }?>" required>
-            <button type="submit" name="oublie">Envoyer</button>
-            <?php if (isset($bad_email)) {
-                echo $bad_email;
-            } ?>
-        </form>
+                    <p>Nouveau mot de passe :</p>
+                    <input name="form[mdp]" class="input" type="password" required>
+
+                    <p>Confirmer le mot de passe :</p>
+                    <input name="form[mdp2]" class="input" type="password" required>
+
+                    <input type="submit" class="submit" value="Modifier">
+                </form>
+                <?php
+                if (isset($error)) {
+                    echo $error;
+                }
+                ?>
+            <?php } else { ?>
+                <?php echo $success; ?>
+                <a href="index.php?page=login" class="link">Se connecter</a>
+            <?php } ?>
+        </div>
     </body>
     <footer>
         <p><?php end_page(); ?><p>
     </footer>
 </html>
+
