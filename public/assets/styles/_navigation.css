@@ -1,0 +1,44 @@
+/* Header */
+#navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    border-radius: 2vh;
+
+    background-color: var(--color_orange2);
+}
+.link-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color_orange);
+
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+    border-radius: 2vh;
+
+    width: 80%;
+    height: 10vh;
+
+    margin: 2vh;
+
+    transition: 0.3s;
+}
+.link-cont:hover {
+    width: 80%;
+    height: 12vh;
+}
+.desc {
+    margin: 0;
+}
+.m-icon {
+    width: 100%;
+    height: 75%;
+    fill: rgb(41, 41, 41);
+}

@@ -19,6 +19,9 @@ function end_page() {
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="assets/styles/_default.css">
+        <link rel="stylesheet" href="assets/styles/_navigation.css">
         <link rel="stylesheet" href="_assets/styles/legalNoticeViewStyle.css">
         <?php start_page('Mentions légales'); ?>
     </head>

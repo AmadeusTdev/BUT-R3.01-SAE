@@ -2,6 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="assets/styles/_default.css">
+        <link rel="stylesheet" href="assets/styles/_navigation.css">
         <link rel="stylesheet" href="assets/styles/signUpStyle.css">
         <?php start_page(); ?>
     </head>
