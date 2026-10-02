@@ -38,7 +38,6 @@
                 </main>
 
                 <footer>
-                    <p>&copy; <?= date('Y') ?> - Tous droits réservés.</p>
                     <?php end_page(); ?>
                 </footer>
             </div>

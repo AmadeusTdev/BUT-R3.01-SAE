@@ -44,7 +44,7 @@
                     </div>
                 </main>
                 <footer>
-                    <p><?php end_page(); ?><p>
+                    <?php end_page(); ?>
                 </footer>
             </div>
         </div>
