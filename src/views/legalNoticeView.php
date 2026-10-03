@@ -5,7 +5,7 @@
 
         <link rel="stylesheet" href="assets/styles/_default.css">
         <link rel="stylesheet" href="assets/styles/_navigation.css">
-        <link rel="stylesheet" href="_assets/styles/legalNoticeViewStyle.css">
+        <link rel="stylesheet" href="assets/styles/legalNoticeViewStyle.css">
         <?php start_page(); ?>
     </head>
     <body>
