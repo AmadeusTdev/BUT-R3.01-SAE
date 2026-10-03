@@ -2,6 +2,17 @@
 function start_page(): void {
     echo '<link rel="icon" type="image/x-icon" href="favicon.ico">';
     echo '<title>Qui est-ce?</title>';
+
+    // Open Graph (Facebook, Discord, LinkedIn, etc.)
+    echo '<meta property="og:title" content="Qui est-ce?">';
+    echo '<meta property="og:description" content="Jeu en ligne Qui est-ce? - Devinez le personnage mystère de votre adversaire.">';
+    echo '<meta property="og:type" content="website">';
+    echo '<meta property="og:image" content="favicon.ico">';
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary">';
+    echo '<meta name="twitter:title" content="Qui est-ce?">';
+    echo '<meta name="twitter:description" content="Jeu en ligne Qui est-ce? - Devinez le personnage mystère de votre adversaire.">';
 }
 function end_page(): void {
     echo <<<HTML
