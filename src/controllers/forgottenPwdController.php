@@ -1,8 +1,10 @@
 <?php
 namespace src\controllers;
 
-class forgottenPwdController {
-    public function execute() : void {
+class ForgottenPwdController
+{
+    public function execute() : void
+    {
         $error = null;
         $success = null;
 
@@ -20,7 +22,8 @@ class forgottenPwdController {
             if (isset($postData['form']['email']) && isset($postData['form']['mdp']) && isset($postData['form']['mdp2'])) {
 
                 // Vérification du format de l'email
-                if (!preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $postData['form']['email'])) {
+                $emailRegex = '/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/';
+                if (!preg_match($emailRegex, $postData['form']['email'])) {
                     $error = "<p class='error'>Format d'email incorrect</p>";
                 }
 
