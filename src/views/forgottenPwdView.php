@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="assets/styles/_default.css">
         <link rel="stylesheet" href="assets/styles/_navigation.css">
         <link rel="stylesheet" href="assets/styles/forgottenPwdStyle.css">
-        <?php start_page(); ?>
+        <?php startPage(); ?>
     </head>
     <body>
         <div id="main-container">
@@ -21,14 +21,16 @@
                         <h1>Mot de passe oublié</h1>
                         <?php if (!isset($success)) { ?>
                             <form method="post" class="form_bg" action="index.php?page=forgottenPwd">
-                                <p>Email :</p>
-                                <input name="form[email]" class="input" type="email" placeholder="Adresse mail" required>
+                                <label for="email">Email :</label>
+                                <input id="email" name="form[email]"
+                           class="input" type="email"
+                           placeholder="Adresse mail" required>
     
-                                <p>Nouveau mot de passe :</p>
-                                <input name="form[mdp]" class="input" type="password" required>
+                                <label for="mdp">Nouveau mot de passe :</label>
+                                <input id="mdp" name="form[mdp]" class="input" type="password" required>
     
-                                <p>Confirmer le mot de passe :</p>
-                                <input name="form[mdp2]" class="input" type="password" required>
+                                <label for="mdp2">Confirmer le mot de passe :</label>
+                                <input id="mdp2" name="form[mdp2]" class="input" type="password" required>
     
                                 <input type="submit" class="submit" value="Modifier">
                             </form>
@@ -44,7 +46,7 @@
                     </div>
                 </main>
                 <footer>
-                    <?php end_page(); ?>
+                    <?php endPage(); ?>
                 </footer>
             </div>
         </div>
